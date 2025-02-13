@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeftLong } from 'react-icons/fa6'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function Countryinfo() {
 
       const [countryInfo, setCountryInfo] = useState()
       const { countryName } = useParams()
-  
+      const navigate = useNavigate()
       async function getCountryInfo(){
         
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`)
@@ -25,7 +25,7 @@ export default function Countryinfo() {
     <section className='bg-[#202c37] px-[70px] py-[80px]'>
       <div className='inline-flex gap-[8px] px-[20px] bg-[#2b3945] text-center items-center rounded-[5px] ml-[3.3rem] mb-[7rem]'>
         <FaArrowLeftLong className='text-[12px] text-white' />
-        <h1 className='text-white'>Back</h1>
+        <h1 className='text-white cursor-pointer'onClick={() => navigate("/")}>Back</h1>
       </div>
       <div className='h-[100vh] flex  gap-[10rem]'>
         <img src={countryInfo?.flags.svg} alt="" className='w-[350px] h-[300px] ml-[3rem]' />
