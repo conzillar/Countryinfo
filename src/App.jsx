@@ -16,7 +16,7 @@ function App() {
     <div className='bg-[#202c37] '>
       <Routes>
         <Route path='/' element={<Main/>} />
-        <Route path='/countryinfo' element={<Countryinfo />} />
+        <Route path='/countryinfo/:countryName' element={<Countryinfo />} />
       </Routes>
     </div>
     </BrowserRouter>
