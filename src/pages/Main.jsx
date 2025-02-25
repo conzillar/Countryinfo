@@ -6,11 +6,28 @@ import { Link } from 'react-router-dom'
 export default function Main() {
 
     const [contries, setContries] = useState()
+    const [selectedContinent, setSelectedContinent] = useState("")
+    const [searchTerm, setSearchTerm] = useState('')
 
     async function getCountries(){
         const response = await fetch("https://restcountries.com/v3.1/all")
         const data = await response.json()
         setContries(data)
+    }
+
+    const getCountriesByContinent = async () => {
+        if(selectedContinent !== ""){
+            try{
+                const response = await fetch(`https://restcountries.com/v3.1/region/${selectedContinent}`);
+                const result = await response.json();
+                setContries(result)
+                // setData(result);
+                console.log("Fetched Data:", result);
+            } catch (error){
+                console.error("Error fetching data:", error)
+            }
+            
+        }
     }
 
 
@@ -21,10 +38,14 @@ export default function Main() {
   return (
     <>
         <Navbar />
-        <Input />
+        <Input setSearchTerm={setSearchTerm} selectedContinent={selectedContinent} getCountriesByContinent={getCountriesByContinent} setSelectedContinent={setSelectedContinent}/>
         <section className=' px-[50px] grid grid-cols-4 gap-[10px] items-center align-center'>
             {
-                contries?.map((country, index) => (
+                contries?.filter(country => {
+                    if(searchTerm === '') return country
+                    else if (country.name.common.toLowerCase().includes(searchTerm.toLowerCase())) return country
+                })
+                .map((country, index) => (
                     <Link to={`/countryinfo/${country.name.common}`} className='pb-[1rem] w-[300px] h-[350px] cursor-pointer' key={index}>
                         <img src= {country.flags.svg} className='w-[300px] h-[200px] object-cover' alt="" />
                         <div className='bg-[#2b3945] w-[300px] px-[20px] pb-[1rem]'>
