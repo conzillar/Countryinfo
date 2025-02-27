@@ -39,16 +39,16 @@ export default function Main() {
     <>
         <Navbar />
         <Input setSearchTerm={setSearchTerm} selectedContinent={selectedContinent} getCountriesByContinent={getCountriesByContinent} setSelectedContinent={setSelectedContinent}/>
-        <section className=' px-[50px] grid grid-cols-4 gap-[10px] items-center align-center'>
+        <section className='px-[20px] md:px-[20px] md:ml-[2.3rem] gap-[3rem] md:grid grid-cols-4 md:gap-[10px] md:items-center md:align-center'>
             {
                 contries?.filter(country => {
                     if(searchTerm === '') return country
                     else if (country.name.common.toLowerCase().includes(searchTerm.toLowerCase())) return country
                 })
                 .map((country, index) => (
-                    <Link to={`/countryinfo/${country.name.common}`} className='pb-[1rem] w-[300px] h-[350px] cursor-pointer' key={index}>
-                        <img src= {country.flags.svg} className='w-[300px] h-[200px] object-cover' alt="" />
-                        <div className='bg-[#2b3945] w-[300px] px-[20px] pb-[1rem]'>
+                    <Link to={`/countryinfo/${country.name.common}`} className=' md:pb-[1rem] md:w-[300px] md:h-[350px] cursor-pointer' key={index}>
+                        <img src= {country.flags.svg} className='w-[350px] md:w-[300px] h-[200px] object-cover' alt="" />
+                        <div className='bg-[#2b3945] px-[] md:w-[300px] mb-[2rem] md:pb-[1rem]'>
                             <h1 className='text-[18px] font-[500] text-white py-[5px]'>{country.name.common}</h1>
                             <p className='text-white'>Population: <span className='text-[#858585]'>{country.population.toLocaleString()}</span></p>
                             <p className='text-white'>Region: <span className='text-[#858585]'> {country.region} </span></p>
