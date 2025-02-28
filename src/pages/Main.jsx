@@ -47,7 +47,7 @@ export default function Main() {
                 })
                 .map((country, index) => (
                     <Link to={`/countryinfo/${country.name.common}`} className=' md:pb-[1rem] md:w-[300px] md:h-[350px] cursor-pointer' key={index}>
-                        <img src= {country.flags.svg} className='w-[350px] md:w-[300px] h-[200px] object-cover' alt="" />
+                        <img src= {country.flags.svg} className='w-full md:w-[300px] h-[200px] object-cover' alt="" />
                         <div className='bg-[#2b3945] px-[] md:w-[300px] mb-[2rem] md:pb-[1rem]'>
                             <h1 className='text-[18px] font-[500] text-white py-[5px]'>{country.name.common}</h1>
                             <p className='text-white'>Population: <span className='text-[#858585]'>{country.population.toLocaleString()}</span></p>

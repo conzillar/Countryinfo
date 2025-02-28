@@ -8,7 +8,7 @@ export default function Input({getCountriesByContinent,selectedContinent, setSel
 
 
     return (
-        <main className='flex flex-col md:flex px-[20px] py-[30px] gap-[5px] justify-between md:justify-between md:px-[50px] md:py-[40px]'>
+        <main className='flex flex-col md:flex-row px-[20px] py-[30px] gap-[5px] justify-between md:justify-between md:px-[50px] md:py-[40px]'>
 
             <div className='bg-[#2b3945] w-[65%] md:w-[25%] h-[43px] rounded-[5px] border-none md:algin-center md:items-center'>
                 <input type="text" name="" id="" placeholder='Search for a country...' onChange={(e)=>setSearchTerm(e.target.value)} className='outline-none px-[5px] text-white w-[100%] h-[43px] ' />
